@@ -1,0 +1,212 @@
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #110d0d;
+}
+
+header {
+  background-color: goldenrod;
+  color: #fff;
+  padding: 20px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+nav ul li a {
+  color: #f7030f;
+  text-decoration: none;
+}
+
+.banner {
+  background-image: url('banner.jpg');
+  background-size: cover;
+  color: #8b0f0f;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.featured-products {
+  padding: 20px;
+  color: white;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+
+.SearchBar {
+  text-align: center;
+  margin-top: 20px; /* Adjust top margin as needed */
+}
+
+.SearchBar input[type=text] {
+  width: 50%; /* Adjust width as needed */
+  padding: 14px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+}
+
+#ScrollItems {
+  width: 75%; /* Adjust width as needed */
+  height: 50%; /* Adjust height as needed */
+  border: 2px solid #ccc; /* Add border around the div */
+  overflow-y: auto; /* Enable horizontal scrolling */
+  padding: 10px; /* Add padding inside the div */
+}
+
+#ScrollItems img {
+  width: 50%; /* Adjust width of each image */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 20px; /* Add spacing between images */
+}
+
+.part-details{
+  display: block;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  color: aqua;
+}
+
+form div {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  color: aqua;
+}
+
+form input {
+  width: 50%;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.button {
+  width: 15%;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+button:hover {
+  background-color: #e71010;
+}
+
+
+h2 {
+  font-size: 2em;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+
+.sql-table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  width: 80%;
+  text-align: center;
+}
+
+.sql-table th, .sql-table td {
+  border: 1px solid black;
+  padding: 8px;
+  color: #333;
+}
+
+.sql-table th {
+  background-color: #f2f2f2;
+}
+
+.sql-table td {
+  background-color: #fff;
+}
+
+.Table-Header{
+  display: block;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  color: aqua;
+
+}
+
+/* Dropdown Button */
+.dropbtn {
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: goldenrod;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  top: 100%; /* Position dropdown content below the button */
+  left: 0;
+}
+
+/* Position the dropdown menu relative to its parent li */
+.dropdown {
+  position: relative;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: whitesmoke;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #cfdd0d;
+}
