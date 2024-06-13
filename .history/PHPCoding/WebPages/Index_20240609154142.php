@@ -11,7 +11,7 @@ if (isset($_SESSION['user_id'])) {
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign In</title>
+        <title>Home Page</title>
         <link rel="stylesheet" href="/ITECAProject/Styling/CSScode.css">
     </head>
 

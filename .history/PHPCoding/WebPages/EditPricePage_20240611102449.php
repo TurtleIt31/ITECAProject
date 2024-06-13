@@ -25,7 +25,7 @@ $conn->close();
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Remove Parts</title>
+  <title>Edit Parts</title>
   <link rel="stylesheet" href="/ITECAProject/Styling/CSScode.css">
 </head>
 
@@ -75,16 +75,25 @@ $conn->close();
         </tbody>
         </table>
 
-        <form action="..\RemovePartsAction.php" method="post" onsubmit="return Validate();">
+        
+        <form action="..\EditPricingAction.php" method="post" onsubmit="return Validate();">
             <br>
             <div class="row">
-          <!-- Part ID-->
-           <label>Please enter the part Id you want to remove</label>
-           <Label class="text-left" for="partName">Part ID </Label>
-           <input name="part_ID" id="part_ID" type="text">
-           <Br>
-           <input type="submit" name="delete" value="Confirm Delete" class="button"></span>
-        </div>
-            
+            <!-- Part ID-->
+            <label>Please enter the part Id you want to edit the price for</label>
+            <input name="part_ID" id="part_ID" type="text">
+            </div>
+           <div class="row">
+            <!-- Part Price-->
+            <label>Please enter what you want the new price to be</label>
+            <input name="part_Price" id="part_Price" type="Number" min="0" step="0.01">
+           </div>
+           
+           
+           <div class="row">
+                <button type="submit" class="button">Edit Price</button>
+           </div>
         </form>
+        
+
 </body>
