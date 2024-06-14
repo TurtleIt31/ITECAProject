@@ -33,7 +33,7 @@ if (isset($_SESSION['user_id'])) {
                     ?>
                             <div class="validation-message"><?php  echo $_SESSION["errorMessage"]; ?></div>
                             <?php
-                    unset($_SESSION["errorMessage"]);
+                    //unset($_SESSION["errorMessage"]);
                 }
                 ?>
                 <script>
