@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,9 +12,9 @@
         <h1>Goldwagen Parts Store</h1>
         <nav>
             <ul class="nav-buttons">
-                <li><a href="ShopPage.php">Home</a></li>
+                <li><a href="HomePage.php">Home</a></li>
                 <li><a href="AboutUsPage.php">About Us</a></li>
-                <li><a href="Contact.php">Contact</a></li>
+                <li><a href="ShopPage.php">Shop</a></li>
                 <?php 
                 session_start();
                 if (isset($_SESSION['user_id'])) : ?>
@@ -34,4 +34,4 @@
         </ul>
     </div>
 </body>
-</html>
+

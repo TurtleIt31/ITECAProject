@@ -27,7 +27,7 @@ if ($conn->error) {
 $conn->close();
 ?>
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -128,4 +128,4 @@ $conn->close();
         </div>
     </form>
 </body>
-</html>
+

@@ -71,4 +71,3 @@ session_start();
 
   <script src="/ITECAProject/Javascript/Javascriptcode.js"></script>
 </body>
-</html>

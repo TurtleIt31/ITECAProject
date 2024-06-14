@@ -86,6 +86,18 @@ footer {
   color: aqua;
 }
 
+.PartName {
+  color: white;
+  text-align: center;
+  font-size: 1.5em; /* Adjust size as needed */
+}
+
+.PartPricing {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+}
+
 form div {
   margin-bottom: 15px;
   display: flex;
@@ -129,7 +141,7 @@ button:hover {
 }
 
 
-h2 {
+h2,h3 {
   font-size: 2em;
   color: #ffffff;
   margin-bottom: 15px;
@@ -292,3 +304,4 @@ h2 {
 .ContactDetails li {
   margin-bottom: 10px; /* Space between list items */
 }
+
