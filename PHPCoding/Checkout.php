@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-include '..\dbInfo.php';
+include 'dbInfo.php'; // Adjust the path if necessary
 
 $userID = $_SESSION['user_id'];
 
@@ -17,10 +17,10 @@ $stmt->bind_param('i', $userID);
 
 if ($stmt->execute()) {
     // Successful purchase
-    header('Location: ViewCart.php?success=Purchase completed');
+    header('Location: \ViewCartPage.php?success=Purchase completed');
 } else {
     // Failed to complete purchase
-    header('Location: ViewCart.php?error=Failed to complete purchase');
+    header('Location: \ViewCartPage.php?error=Failed to complete purchase');
 }
 
 $stmt->close();

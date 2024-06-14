@@ -6,14 +6,14 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-include '..\dbInfo.php';
+include '../dbInfo.php'; 
 
 $userID = $_SESSION['user_id'];
 
-$sql = "SELECT carparts.PartName, carparts.Pricing, ShoppingCartItems.PartsBought
+$sql = "SELECT carparts.PartName, carparts.Pricing, ShoppingCartItems.PartsInCart
         FROM ShoppingCartItems
-        JOIN carparts ON ShoppingCartItems.partID = carparts.PartID
-        WHERE ShoppingCartItems.userID = ? AND ShoppingCartItems.purchased = 0";
+        JOIN carparts ON ShoppingCartItems.PartID = carparts.PartID
+        WHERE ShoppingCartItems.UserID = ? AND ShoppingCartItems.Purchased = 0";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('i', $userID);
 $stmt->execute();
@@ -42,29 +42,36 @@ $result = $stmt->get_result();
 </header>
 
 <br>
-<div id="CartItems">
-    <?php
-    if ($result->num_rows > 0) {
-        $totalAmount = 0;
-        while ($row = $result->fetch_assoc()) {
-            $amount = $row['Pricing'] * $row['PartsBought'];
-            $totalAmount += $amount;
-            echo '<div>';
-            echo '<h3>' . htmlspecialchars($row['PartName']) . '</h3>';
-            echo '<p>Pricing: ' . htmlspecialchars($row['Pricing']) . '</p>';
-            echo '<p>Quantity: ' . htmlspecialchars($row['PartsBought']) . '</p>';
-            echo '<p>Amount: ' . htmlspecialchars($amount) . '</p>';
+<div class="CartItems">
+    <form action="..\Checkout.php" method="POST">
+        <?php
+        if ($result->num_rows > 0) {
+            $totalAmount = 0;
+            while ($row = $result->fetch_assoc()) {
+                $amount = $row['Pricing'] * $row['PartsInCart'];
+                $totalAmount += $amount;
+                echo '<div class="CartItem">';
+                echo '<h3 class="ItemName">' . htmlspecialchars($row['PartName']) . '</h3>';
+                echo '<p class="ItemPricing">Pricing: ' . htmlspecialchars($row['Pricing']) . '</p>';
+                echo '<p class="ItemQuantity">Quantity: ' . htmlspecialchars($row['PartsInCart']) . '</p>';
+                echo '<p class="ItemAmount">Amount: ' . htmlspecialchars($amount) . '</p>';
+                echo '</div>';
+            }
+            echo '<div class="TotalAmount"><h2>Total Amount to pay: ' . htmlspecialchars($totalAmount) . '</h2></div>';
+            echo '<div class="row">';
+            echo '<input type="submit" name="Pay" value="Pay" class="button">';
             echo '</div>';
+        } else {
+            echo '<p>Your cart is empty.</p>';
         }
-        echo '<div><h2>Total Amount: ' . htmlspecialchars($totalAmount) . '</h2></div>';
-    } else {
-        echo '<p>Your cart is empty.</p>';
-    }
 
-    $stmt->close();
-    $conn->close();
-    ?>
+        $stmt->close();
+        $conn->close();
+        ?>
+    </form>
 </div>
+
+
 
 </body>
 </html>

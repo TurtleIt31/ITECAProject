@@ -15,6 +15,12 @@ if (isset($_POST['partID'])) {
     // Check if the part is already in the cart
     $sql_check = "SELECT * FROM ShoppingCartItems WHERE UserID = ? AND PartID = ? AND Purchased = 0";
     $stmt_check = $conn->prepare($sql_check);
+
+    if ($stmt_check === false) {
+        error_log('Prepare failed: ' . htmlspecialchars($conn->error), 3, 'error_log.txt');
+        die('Prepare failed: ' . htmlspecialchars($conn->error));
+    }
+
     $stmt_check->bind_param('ii', $userID, $partID);
     $stmt_check->execute();
     $result_check = $stmt_check->get_result();
@@ -23,12 +29,22 @@ if (isset($_POST['partID'])) {
         // Part is already in the cart, update quantity
         $sql_update = "UPDATE ShoppingCartItems SET PartsInCart = PartsInCart + 1 WHERE UserID = ? AND PartID = ? AND Purchased = 0";
         $stmt_update = $conn->prepare($sql_update);
+
+        if ($stmt_update === false) {
+            error_log('Prepare failed: ' . htmlspecialchars($conn->error), 3, 'error_log.txt');
+            die('Prepare failed: ' . htmlspecialchars($conn->error));
+        }
+
         $stmt_update->bind_param('ii', $userID, $partID);
-        
+
         if ($stmt_update->execute()) {
-            header('Location: ShopPage.php?success=Quantity updated in cart');
+            // Redirect to ShopPage with success message
+            header('Location: Webpages\ShopPage.php?success=Quantity updated in cart');
+            exit();
         } else {
-            header('Location: ShopPage.php?error=Failed to update quantity in cart');
+            error_log('Execute failed: ' . htmlspecialchars($stmt_update->error), 3, 'error_log.txt');
+            header('<Location:>Webpages\ShopPage.php?error=Failed to update quantity in cart');
+            exit();
         }
 
         $stmt_update->close();
@@ -36,12 +52,22 @@ if (isset($_POST['partID'])) {
         // Part is not in the cart, insert new record
         $sql_insert = "INSERT INTO ShoppingCartItems (UserID, PartID, PartsInCart, Purchased) VALUES (?, ?, 1, 0)";
         $stmt_insert = $conn->prepare($sql_insert);
+
+        if ($stmt_insert === false) {
+            error_log('Prepare failed: ' . htmlspecialchars($conn->error), 3, 'error_log.txt');
+            die('Prepare failed: ' . htmlspecialchars($conn->error));
+        }
+
         $stmt_insert->bind_param('ii', $userID, $partID);
-        
+
         if ($stmt_insert->execute()) {
-            header('Location: ShopPage.php?success=Part added to cart');
+            // Redirect to ShopPage with success message
+            header('Location: Webpages\ShopPage.php?success=Part added to cart');
+            exit();
         } else {
-            header('Location: ShopPage.php?error=Failed to add part to cart');
+            error_log('Execute failed: ' . htmlspecialchars($stmt_insert->error), 3, 'error_log.txt');
+            header('Location: Webpages\ShopPage.php?error=Failed to add part to cart');
+            exit();
         }
 
         $stmt_insert->close();
@@ -51,5 +77,6 @@ if (isset($_POST['partID'])) {
     $conn->close();
 } else {
     header('Location: ShopPage.php');
+    exit();
 }
 ?>

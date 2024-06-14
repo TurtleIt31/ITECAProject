@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 include '../dbInfo.php';
 
 // Define columns to select
-$columns = ["PartID", "PartName", "Pricing", "VehicleTYpe", "Inventory"];
+$columns = ["PartID", "PartName", "Pricing", "VehicleType", "Inventory"];
 
 // Construct column names for SQL query
 $columnNames = implode(", ", $columns);
@@ -18,10 +18,17 @@ $columnNames = implode(", ", $columns);
 $sql = "SELECT $columnNames FROM carparts";
 $result = $conn->query($sql);
 
+// Check for SQL query error
+if ($conn->error) {
+    die("SQL error: " . $conn->error);
+}
+
 // Close the database connection
 $conn->close();
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,18 +80,18 @@ $conn->close();
             }
             ?>
         </tbody>
-        </table>
+    </table>
 
-        <form action="..\RemovePartsAction.php" method="post" onsubmit="return Validate();">
-            <br>
-            <div class="row">
-          <!-- Part ID-->
-           <label>Please enter the part Id you want to remove</label>
-           <Label class="text-left" for="partName">Part ID </Label>
-           <input name="part_ID" id="part_ID" type="text">
-           <Br>
-           <input type="submit" name="delete" value="Confirm Delete" class="button"></span>
+    <form action="..\RemovePartsAction.php" method="post" onsubmit="return Validate();">
+        <br>
+        <div class="row">
+            <!-- Part ID-->
+            <label>Please enter the part Id you want to remove</label>
+            <Label class="text-left" for="partName">Part ID </Label>
+            <input name="part_ID" id="part_ID" type="text">
+            <Br>
+            <input type="submit" name="delete" value="Confirm Delete" class="button">
         </div>
-            
-        </form>
+    </form>
 </body>
+</html>

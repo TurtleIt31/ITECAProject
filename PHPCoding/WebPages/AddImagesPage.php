@@ -91,11 +91,11 @@ $conn->close();
            <div class="row">
             <!-- Part Picture-->
             <label>Please select the picture you wish to upload</label>
-            <input name="part_Picture" id="part_Picture" type="file">
+            <input name="part_Picture" id="part_Picture" type="file" class="UploadImage">
            </div>
            
            
-           <div class="row">
+           <div class="rowUpload">
                 <button type="submit" class="button">Upload Picture</button>
            </div>
         </form>

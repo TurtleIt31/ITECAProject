@@ -12,8 +12,21 @@
         <li><a href="HomePage.php">Home</a></li>
         <li><a href="AboutUsPage.php">About Us</a></li>
         <li><a href="Contact.php">Contact</a></li>
-        <li><a href="Index.php">Sign In</a></li>
+        
+        <?php 
+        session_start();
+        if (isset($_SESSION['user_id'])) : ?>
+            
+                <li><a href="ViewCartPage.php">View Cart</a></li>
+
+                <li><a href="../LogoutAction.php">Logout</a></li>
+
+
+        <?php else : ?>
+            <li><a href="Index.php">Sign In</a></li>
+        <?php endif; ?>
       </ul>
+
     </nav>
 </header>
 
@@ -34,7 +47,7 @@
     <div id="ScrollItems">
         <?php
 
-        session_start();
+        //session_start();
         // Include your database connection file
         include '..\dbInfo.php';
 

@@ -9,12 +9,25 @@
     <header>
         <h1>Goldwagen Parts store</h1>
         <nav>
-          <ul class="nav-buttons">
-            <li><a href="ShopPage.php">Shop</a></li>
-            <li><a href="Contact.php">Contact</a></li>
+       <ul class="nav-buttons">
+        <li><a href="ShopPage.php">Home</a></li>
+        <li><a href="AboutUsPage.php">About Us</a></li>
+        <li><a href="Contact.php">Contact</a></li>
+        
+        <?php 
+        session_start();
+        if (isset($_SESSION['user_id'])) : ?>
+            
+                <li><a href="ViewCartPage.php">View Cart</a></li>
+
+                <li><a href="../LogoutAction.php">Logout</a></li>
+
+
+        <?php else : ?>
             <li><a href="Index.php">Sign In</a></li>
-            <li><a href="HomePage.php">Home</a></li>
-          </ul>
-        </nav>
+        <?php endif; ?>
+      </ul>
+
+    </nav>
     </header>
 </body>
