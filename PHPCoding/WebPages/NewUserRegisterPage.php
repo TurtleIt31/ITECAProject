@@ -19,7 +19,7 @@ if (isset($_SESSION['user_id'])) {
     <header>
         <h1>Goldwagen Parts store</h1>
         <nav>
-          <ul>
+          <ul class="nav-buttons">
             <li><a href="ShopPage.php">Shop</a></li>
             <li><a href="Contact.php">Contact</a></li>
             <li><a href="Index.php">Sign In</a></li>

@@ -210,3 +210,29 @@ h2 {
 .dropdown-content a:hover {
   background-color: #cfdd0d;
 }
+
+.nav-buttons {
+  list-style-type: none; /* Remove bullets */
+  padding: 0;
+  margin: 0;
+  display: flex; /* Arrange items horizontally */
+  gap: 10px; /* Add space between buttons */
+}
+
+.nav-buttons li {
+  margin: 0; /* Remove default margin */
+}
+
+.nav-buttons li a {
+  display: block;
+  padding: 10px 20px; /* Add padding for button-like appearance */
+  text-decoration: none; /* Remove underline from links */
+  background-color:red; /* Background color */
+  color: white; /* Text color */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.nav-buttons li a:hover {
+  background-color: #0056b3; /* Darker background on hover */
+}

@@ -8,7 +8,7 @@
 <header>
     <h1>Goldwagen Parts store</h1>
     <nav>
-      <ul>
+       <ul class="nav-buttons">
         <li><a href="HomePage.php">Home</a></li>
         <li><a href="AboutUsPage.php">About Us</a></li>
         <li><a href="Contact.php">Contact</a></li>
@@ -18,7 +18,7 @@
 </header>
 
 <br>
-    <form action="search.php" method="GET" class=""SearchBar>
+    <form action="../SearchAction.php" method="GET" class=""SearchBar>
         <input type="text" name="partName" placeholder="Search for car parts here..">
         <select name="category">
             <option value="">Select Category</option>
@@ -30,32 +30,46 @@
         </select>
         <button type="submit">Search</button>
     </form>
+<!-- Display search results -->
 <div id="ScrollItems">
-    <?php
-    include '../dbInfo.php';
+        <?php
+        // Include your database connection file
+        include '../dbInfo.php'; // Adjust the path as necessary
 
-    // SQL query to retrieve all parts
-    $sql = "SELECT PartID, PartName, Pricing, ImagePath FROM carparts";
-    $result = $conn->query($sql);
+        // Initialize variables
+        $partName = isset($_GET['partName']) ? $_GET['partName'] : '';
+        $category = isset($_GET['category']) ? $_GET['category'] : '';
 
-    if ($result && $result->num_rows > 0) {
-        // Display each part
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="part-item">';
-            echo '<img src="../' . htmlspecialchars($row['ImagePath']) . '" alt="' . htmlspecialchars($row['PartName']) . '">';
-            echo '<div class="part-details">';
-            echo '<p><strong>Part Name:</strong> ' . htmlspecialchars($row['PartName']) . '</p>';
-            echo '<p><strong>Price:</strong> R' . htmlspecialchars($row['Pricing']) . '</p>';
-            echo '</div>';
-            echo '</div>';
+        // Construct SQL query
+        $sql = "SELECT PartID, PartName, Pricing, ImagePath FROM carparts WHERE 1";
+
+        if (!empty($partName)) {
+            $sql .= " AND PartName LIKE '%" . $conn->real_escape_string($partName) . "%'";
         }
-    } else {
-        echo "No parts found.";
-    }
 
-    // Close the database connection
-    $conn->close();
-    ?>
-</div>
+        if (!empty($category)) {
+            $sql .= " AND Category = '" . $conn->real_escape_string($category) . "'";
+        }
+
+        // Execute query
+        $result = $conn->query($sql);
+
+        // Display results
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                echo '<div>';
+                echo '<h3>' . htmlspecialchars($row['PartName']) . '</h3>';
+                echo '<p>Pricing: ' . htmlspecialchars($row['Pricing']) . '</p>';
+                echo '<img src="' . htmlspecialchars($row['ImagePath']) . '" alt="' . htmlspecialchars($row['PartName']) . '">';
+                echo '</div>';
+            }
+        } else {
+            echo '<p>No parts found.</p>';
+        }
+
+        // Close database connection
+        $conn->close();
+        ?>
+    </div>
 
 </body>
