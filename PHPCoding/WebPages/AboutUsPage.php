@@ -30,4 +30,11 @@
 
     </nav>
     </header>
+
+    <div class="ContactDetails">
+        <ul class="ContactDetails">
+            <li>We have been servicing clients for over 100 years and we are going online for the first time.</li>
+          
+          </ul>
+    </div>
 </body>

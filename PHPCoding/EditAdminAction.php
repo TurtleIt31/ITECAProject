@@ -23,11 +23,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
         if ($conn->query($update_sql) === true) {
             echo "User type updated successfully";
-            header("Location: Webpages/EditAdminPage.php");
+            header('Location: Webpages/EditAdminPage.php?success=User edited succesfully');
             
         } else {
             echo "Error updating record: " . $conn->error;
-            //header("Location: Webpages/EditAdminPage.php");
+            header('Location: Webpages/EditAdminPage.php?fail=User edited failed to complete');
         }
 
      }

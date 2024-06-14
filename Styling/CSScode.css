@@ -281,3 +281,14 @@ h2 {
   color:  red; /* Dark text color */
   margin-top: 20px; /* Space above total amount */
 }
+
+.ContactDetails {
+  font-size: 24px; /* Large readable text */
+  color: white; /* White text color */
+  list-style: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+}
+
+.ContactDetails li {
+  margin-bottom: 10px; /* Space between list items */
+}

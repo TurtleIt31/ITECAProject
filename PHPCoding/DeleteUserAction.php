@@ -14,11 +14,11 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
         if ($conn->query($Deletesql) === TRUE) {
             echo "User deleted successfully";
-            header("Location: Webpages/EditAdminPage.php");
+            header('Location: Webpages/EditAdminPage.php?success=User deleted succesfully');
             
         } else {
             echo "Error updating record: " . $conn->error;
-            //header("Location: Webpages/EditAdminPage.php");
+            header('Location: Webpages/EditAdminPage.php?fail=User failed to be deleted');
         }
 
      }

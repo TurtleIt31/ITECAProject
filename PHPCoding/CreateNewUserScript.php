@@ -14,8 +14,10 @@ $sql = "INSERT INTO user (EmailAddress, Password) VALUES ('$userEmail', '$hashed
 
 if ($conn->query($sql) === TRUE) {
     echo "New user inserted successfully";
+    header('Location: Webpages/HomePage.php?success=New user Inserted');
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
+    header('Location: Webpages/HomePage.php?fail=User fail to be created');
 }
 
 // Close connection

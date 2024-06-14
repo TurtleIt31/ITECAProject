@@ -65,12 +65,6 @@ session_start();
     //var_dump($_SESSION['loggedin']) error handling code
     ?>
   </section>
-
-  <section class="featured-products">
-    <h2>Featured Products</h2>
-    <!-- Featured products will be dynamically added here using JavaScript -->
-  </section>
-
   <footer>
     <p>&copy; 2024 Car Parts Store. All rights reserved.</p>
   </footer>

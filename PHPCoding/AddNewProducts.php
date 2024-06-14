@@ -18,6 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $partPrice = (float) $_POST['part_Price'];
     } else {
         die('Invalid part price');
+        header('Location: Webpages/AdminAddPartPage.php?fail=Part Price Failed Update');
     }
 
     //<!-- Inventory of parts-->
@@ -25,6 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $partInventory = (int) $_POST['part_Inventory'];
     } else {
         die('Invalid part inventory');
+        header('Location: Webpages/AdminAddPartPage.php?fail=Invalid Inventory Update');
     }
 
 
@@ -49,10 +51,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $insert_sql = "INSERT INTO carparts (PartName,VehicleType,Inventory,VINNumber,Pricing) VALUES('$partName','$vehicleType','$partInventory','$partVINNumber','$partPrice')";
         if ($conn->query($insert_sql) === TRUE) {//check that the insert worked
             $_SESSION['Status message'] = "Part added succesfully";
-            header("Location: Webpages/HomePage.php");
+            header('Location: Webpages/AdminAddPartPage.php?success=Part Succesefully added');
         } else {
             echo "Error: " . $insert_sql . "<br>" . $conn->error;//error handling
-            $_SESSION['error_message'] = "Error has occured";
+            header('Location: Webpages/AdminAddPartPage.php?fail=unkown error');
 
         }
 
