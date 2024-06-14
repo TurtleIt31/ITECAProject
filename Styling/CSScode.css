@@ -49,15 +49,18 @@ footer {
 
 
 .SearchBar {
+  display: flex;
+  justify-content: center;
   text-align: center;
-  margin-top: 20px; /* Adjust top margin as needed */
+  margin-top: 20px;
 }
 
-.SearchBar input[type=text] {
-  width: 50%; /* Adjust width as needed */
+.SearchBar input[type=text], .SearchBar select {
+  width: 420px; 
   padding: 14px;
   font-size: 16px;
   border: 1px solid #ccc;
+  margin-right: 10px; /* Space between input and select */
 }
 
 #ScrollItems {
